@@ -11,17 +11,17 @@ def build_vector_store(data_path, output_dir, lang="zh"):
     with open(data_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # 提取对应语言的 embedding 和文本内容
+    # extract embeddings and text for the chosen language
     embedding_key = f"embedding_{lang}"
     text_key = f"text_{lang}"
 
-    # 过滤掉缺失 embedding 的项
+    # filter out items missing embeddings
     valid_data = [item for item in data if embedding_key in item and item[embedding_key]]
 
     embeddings = np.array([item[embedding_key] for item in valid_data], dtype=np.float32)
-    metadata = [item for item in valid_data]  # 保存完整的段落结构
+    metadata = [item for item in valid_data]  # keep full paragraph structure
 
-    # 构建并保存 FAISS 索引
+    # build and save FAISS index
     dim = embeddings.shape[1]
     index = faiss.IndexFlatL2(dim)
     index.add(embeddings)
@@ -30,7 +30,7 @@ def build_vector_store(data_path, output_dir, lang="zh"):
     with open(os.path.join(output_dir, f"crack_{lang}_chunks.pkl"), "wb") as f:
         pickle.dump(metadata, f)
 
-    print(f"✅ {lang} 向量索引与元数据已保存到 {output_dir}/crack_{lang}.*")
+    print(f"✅ {lang} vectors and metadata saved to {output_dir}/crack_{lang}.*")
 
 
 if __name__ == "__main__":

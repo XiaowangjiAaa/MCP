@@ -10,9 +10,7 @@ def is_valid_image(path: str) -> bool:
 
 
 def load_image_as_tensor(image_path: str, size: Tuple[int, int] = (256, 256)) -> torch.Tensor:
-    """
-    加载图像为 Tensor，默认归一化 [-1, 1]，供模型推理使用
-    """
+    """Load an image as a tensor normalized to [-1, 1] for inference."""
     if not is_valid_image(image_path):
         raise FileNotFoundError(f"❌ Invalid image path: {image_path}")
     
@@ -26,9 +24,7 @@ def load_image_as_tensor(image_path: str, size: Tuple[int, int] = (256, 256)) ->
 
 
 def load_image_pair(image_path: str, gt_path: Optional[str] = None) -> Tuple[Image.Image, Optional[Image.Image]]:
-    """
-    加载 RGB 图像 + 可选 GT（灰度）图像为 PIL 对象
-    """
+    """Load an RGB image and optional grayscale GT image as PIL objects."""
     if not is_valid_image(image_path):
         raise FileNotFoundError(f"❌ Invalid image path: {image_path}")
     
@@ -38,9 +34,7 @@ def load_image_pair(image_path: str, gt_path: Optional[str] = None) -> Tuple[Ima
 
 
 def resolve_output_path(image_path: str, suffix: str, output_dir: str = "outputs") -> str:
-    """
-    根据输入图像名和输出后缀生成输出路径（自动创建文件夹）
-    """
+    """Generate an output path from the input image name and suffix."""
     base = os.path.basename(image_path)
     name, _ = os.path.splitext(base)
     os.makedirs(output_dir, exist_ok=True)
@@ -48,9 +42,7 @@ def resolve_output_path(image_path: str, suffix: str, output_dir: str = "outputs
 
 
 def list_image_pairs(images_dir: str, gt_dir: Optional[str] = None) -> List[Dict]:
-    """
-    扫描一个文件夹下所有图像，构建 image + gt 路径对列表
-    """
+    """Scan a folder and build a list of image/GT path pairs."""
     image_files = sorted([
         f for f in os.listdir(images_dir)
         if is_valid_image(os.path.join(images_dir, f))

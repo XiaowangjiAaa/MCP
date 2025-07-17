@@ -28,18 +28,18 @@ def generate_agent_reply(user_input: str, plan: dict, results: list) -> str:
         return rag_result["outputs"].get("answer", "")
 
     prompt = (
-        "你是一个专注于裂缝图像分析的 AI 助手\n"
-        "请根据以下信息，用自然语言总结任务完成情况\n"
-        "要求语言简洁清晰，尽可能提及图像编号、处理内容和关键结果：\n\n"
-        f"🖍️ 用户请求：{user_input}\n"
-        f"📋 执行计划：{json.dumps(plan, ensure_ascii=False)}\n"
-        f"✅ 执行结果：{json.dumps(results, ensure_ascii=False)}\n\n"
-        "请直接生成一段回复，不要附加解释或格式标签。"
+        "You are an AI assistant focused on crack image analysis.\n"
+        "Summarize the task results using natural language.\n"
+        "Keep the reply short and mention image indices, operations and key results when possible.\n\n"
+        f"🖍️ User request: {user_input}\n"
+        f"📋 Plan: {json.dumps(plan, ensure_ascii=False)}\n"
+        f"✅ Results: {json.dumps(results, ensure_ascii=False)}\n\n"
+        "Provide the answer only, no additional explanations or formatting."
     )
     response = client.chat.completions.create(
         model="gpt-4.1-mini",
         messages=[
-            {"role": "system", "content": "你是一个专业裂缝图像分析 AI，负责生成自然语言分析答复。"},
+            {"role": "system", "content": "You are a professional crack image analysis AI that returns concise summaries."},
             {"role": "user", "content": prompt}
         ]
     )
@@ -50,7 +50,7 @@ def chat_fallback(user_input: str) -> str:
     response = client.chat.completions.create(
         model="gpt-4.1-mini",
         messages=[
-            {"role": "system", "content": "你是一个专注于裂缝图像分析的 AI Agent。"},
+            {"role": "system", "content": "You are an AI agent focused on crack image analysis."},
             {"role": "user", "content": user_input}
         ]
     )
@@ -69,14 +69,14 @@ def match_metric_key(requested: str, candidate: str) -> bool:
 
 if __name__ == "__main__":
     while True:
-        user_input = input("\n🧠 请输入自然语言指令（或 exit）: ")
+        user_input = input("\n🧠 Enter a command (or exit): ")
         if user_input.strip().lower() in {"exit", "quit"}:
             session.export_memory_snapshot()
             session.print_summary()
             break
 
         logger.log_user(user_input)
-        print("🗽 正在理解意图...")
+        print("🗽 Understanding intent...")
 
         plan = generate_composite_plan(user_input)
         steps = plan.get("steps", [])
@@ -85,11 +85,11 @@ if __name__ == "__main__":
             has_rag_tool = any(step.get("tool", "").lower() == "rag_answer" for step in steps)
             
             if has_rag_tool:
-                print("📚 触发知识问答 rag_answer 工具执行...")
-                tool_plan = steps  # ✅ 直接将 planner 生成的 steps 作为执行计划
+                print("📚 Executing rag_answer for knowledge query...")
+                tool_plan = steps  # use planner-generated steps directly
                 results = execute_plan(tool_plan, memory=memory)
                 reply = generate_agent_reply(user_input, plan, results)
-                print("\n💬 AI 回答:")
+                print("\n💬 AI answer:")
                 print(reply)
                 logger.log_agent(reply)
                 continue
@@ -98,7 +98,7 @@ if __name__ == "__main__":
                 print("💬", chat_fallback(user_input))
                 continue
 
-        print("\n📋 任务计划:")
+        print("\n📋 Task plan:")
         for i, step in enumerate(steps):
             print(f"{i+1}. {step['action']} → index={step.get('target_indices')}")
 
@@ -132,7 +132,7 @@ if __name__ == "__main__":
                 step["visual_types"] = visual_types
 
             if not indices:
-                print(f"⚠️ 步骤 [{action}] 缺少图像索引")
+                print(f"⚠️ step [{action}] missing image indices")
                 continue
 
             for i in indices:
@@ -144,11 +144,11 @@ if __name__ == "__main__":
 
                 if action == "segment":
                     if os.path.exists(mask_path):
-                        print(f"♻️ 掩膜已存在，跳过 segment: {mask_path}")
+                        print(f"♻️ Mask already exists, skipping segment: {mask_path}")
                         results.append({
                             "tool": "segment_crack_image",
                             "status": "success",
-                            "summary": "掩膜已存在于磁盘，跳过执行",
+                            "summary": "Mask already exists on disk, skipping",
                             "outputs": {"mask_path": mask_path},
                             "visualizations": None,
                             "args": {"image_path": img_path},
@@ -163,13 +163,13 @@ if __name__ == "__main__":
 
                 elif action == "quantify":
                     if memory.has_metrics(name, metrics, pixel_size):
-                        print(f"✅ 图像 {name} 的指标已存在于 memory，使用缓存结果。")
+                        print(f"✅ Metrics for image {name} already in memory; using cached results.")
                         metric_values = memory.get_metrics_by_name(name, pixel_size)
                         outputs = {k: v for k, v in metric_values.items() if any(map(lambda m: m.lower() in k.lower(), metrics))}
                         results.append({
                             "tool": "quantify_crack_geometry",
                             "status": "success",
-                            "summary": f"读取自 memory，包含 {len(outputs)} 项指标",
+                            "summary": f"Loaded from memory with {len(outputs)} metrics",
                             "outputs": outputs,
                             "visualizations": None,
                             "args": {
@@ -214,7 +214,7 @@ if __name__ == "__main__":
                     results.append({
                         "tool": "visualize_crack_result",
                         "status": "success" if vis_paths else "no_output",
-                        "summary": f"生成了 {len(vis_paths)} 张可视化图" if vis_paths else "未生成可视化图像",
+                        "summary": f"Generated {len(vis_paths)} visuals" if vis_paths else "No visualization produced",
                         "outputs": {},
                         "visualizations": vis_paths,
                         "args": {"subject_name": name, "visual_types": visual_types},
@@ -222,15 +222,15 @@ if __name__ == "__main__":
                     })
 
         if not tool_plan and results:
-            print("♻️ 所有步骤已由 memory 命中，无需执行工具链。")
+            print("♻️ All steps hit in memory; no tools executed.")
         else:
-            print("\n🚀 正在执行:")
+            print("\n🚀 Executing:")
             for step in tool_plan:
                 print(f"→ {step['tool']}({step['args']})")
             exec_results = execute_plan(tool_plan, memory=memory)
             results += exec_results
 
-            # ✅ 新增：保存 generate 可视化图到 memory
+            # save generated visualization paths to memory
             for r in exec_results:
                 if r['tool'] == "quantify_crack_geometry" and r['status'] == "success":
                     subject = r["subject"]
@@ -241,13 +241,13 @@ if __name__ == "__main__":
         for r in results:
             print(f"[{r['tool']}] → {r['status']}")
             if r['tool'] == "quantify_crack_geometry" and r['status'] == "success":
-                print("📊 请求指标:")
+                print("📊 Requested metrics:")
                 for k, v in r.get("outputs", {}).items():
                     print(f"  {k}: {v}")
 
         for step in tool_plan:
             if "action" not in step:
-                step["action"] = step.get("task", "")  # ✅ 兼容 memory 逻辑
+                step["action"] = step.get("task", "")  # keep compatibility with memory logic
 
         memory.update_context(
             intent="multi_step",
@@ -263,10 +263,10 @@ if __name__ == "__main__":
             "steps": steps,
             "tool_plan": tool_plan,
             "result": results,
-            "message": "✅ 多步骤任务完成"
+            "message": "✅ Multi-step task completed"
         })
 
         reply = generate_agent_reply(user_input, tool_plan, results)
-        print("\n💬 AI 总结答复:")
+        print("\n💬 AI summary:")
         print(reply)
         logger.log_agent(reply)

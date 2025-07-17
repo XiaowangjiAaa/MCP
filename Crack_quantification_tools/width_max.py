@@ -4,14 +4,16 @@ from scipy.spatial import cKDTree
 from .skeleton import extract_skeleton_and_normals
 
 def compute_max_width_px(mask: np.ndarray) -> float:
-    """
-    基于骨架点到轮廓的成对距离，计算裂缝最大宽度（单位：像素）。
+    """Compute the maximum crack width in pixels.
+
+    The method pairs skeleton points to contour points and takes the
+    largest distance between paired boundaries.
     """
     _, skeleton_points, _ = extract_skeleton_and_normals(mask)
     if len(skeleton_points) == 0:
         return 0.0
 
-    # 提取轮廓点
+    # extract contour points
     contours, _ = cv2.findContours((mask * 255).astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     if not contours:
         return 0.0

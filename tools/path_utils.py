@@ -3,36 +3,30 @@ from typing import List, Tuple
 import re
 
 def list_image_paths(folder: str, suffixes: List[str] = [".jpg", ".png", ".jpeg"]) -> List[str]:
-    """
-    通用路径读取函数，返回指定文件夹下的图像文件路径列表（POSIX 相对路径）
-    """
+    """Generic function returning image paths within a folder (POSIX style)."""
     folder_path = Path(folder)
     if not folder_path.exists():
-        raise FileNotFoundError(f"❌ 文件夹不存在: {folder}")
+        raise FileNotFoundError(f"Folder not found: {folder}")
 
     paths = []
     for suf in suffixes:
         paths.extend(folder_path.glob(f"*{suf}"))
 
-    # 🔒 确保排序稳定（按文件名）
+    # ensure stable ordering by filename
     return sorted([str(p.as_posix()) for p in paths], key=lambda x: Path(x).name)
 
 def get_test_image_paths() -> List[str]:
-    """
-    返回用于分割的所有测试图像路径（来自 data/Test_images）
-    """
+    """Return all test image paths for segmentation (from data/Test_images)."""
     return list_image_paths("data/Test_images")
 
 def get_test_image_by_index(index: int) -> str:
-    """
-    返回 Test_images 中按排序的第 index 张图像路径
-    支持 index = -1 代表最后一张图像
-    """
+    """Return the image path at position ``index`` from Test_images.
+    Supports ``index=-1`` for the last image."""
     images = get_test_image_paths()
     if index < 0:
-        index = len(images) + index  # 支持 -1 表示最后一张
+        index = len(images) + index  # support -1 for last image
     if index < 0 or index >= len(images):
-        raise IndexError(f"❌ 图像索引 {index} 越界，当前仅有 {len(images)} 张图像")
+        raise IndexError(f"Image index {index} out of range; only {len(images)} images")
     return images[index]
 
 def generate_segment_plan_from_paths(image_paths: list) -> list:
@@ -42,14 +36,12 @@ def generate_segment_plan_from_paths(image_paths: list) -> list:
     ]
 
 def get_comparison_image_pairs() -> List[Tuple[str, str]]:
-    """
-    从 data/Test_images_GT 与 outputs/masks 中配对获取可比较的 GT vs 预测掩膜路径。
-    返回：[(gt_path, pred_path), ...]
-    """
+    """Pair GT and predicted mask paths from data/Test_images_GT and outputs/masks.
+    Returns a list of tuples ``(gt_path, pred_path)``."""
     gt_paths = list_image_paths("data/Test_images_GT", suffixes=[".png"])
     pred_paths = list_image_paths("outputs/masks", suffixes=[".png"])
 
-    # 按照文件名进行配对
+    # pair by file name
     gt_dict = {Path(p).name: p for p in gt_paths}
     pred_dict = {Path(p).name: p for p in pred_paths}
 
@@ -61,22 +53,18 @@ def get_comparison_image_pairs() -> List[Tuple[str, str]]:
     return pairs
 
 def get_csv_paths(results_dir: str = "outputs/csv/") -> Tuple[str, str]:
-    """
-    返回 prediction.csv 与 ground_truth.csv 的路径，用于对比分析。
-    默认目录为 outputs/results
-    """
+    """Return paths of prediction.csv and ground_truth.csv for comparison.
+    Default directory is ``outputs/results``."""
     base = Path(results_dir)
     pred = base / "prediction.csv"
     gt = base / "ground_truth.csv"
     if not pred.exists() or not gt.exists():
-        raise FileNotFoundError("❌ prediction.csv 或 ground_truth.csv 不存在")
+        raise FileNotFoundError("prediction.csv or ground_truth.csv not found")
 
     return str(gt.as_posix()), str(pred.as_posix())
 
 def extract_image_indices(text: str) -> List[int]:
-    """
-    从自然语言中提取“第1张”、“第2张”、“image 3”等，转为 index（从0开始）
-    """
+    """Extract indices from natural language, e.g. "first image" or "image 3"."""
     text = text.lower()
     indices = []
 
@@ -89,7 +77,7 @@ def extract_image_indices(text: str) -> List[int]:
         if k in text:
             indices.append(v)
 
-    # 正则匹配：image N
+    # regex match: image N
     matches = re.findall(r'image\\s*(\\d+)', text)
     indices.extend([int(m) - 1 for m in matches])
 

@@ -6,7 +6,7 @@ from MCP.tool import tool
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-# 可替换为真实装饰器
+# placeholder decorator
 def tool(name=None):
     def decorator(fn):
         return fn
@@ -15,22 +15,22 @@ def tool(name=None):
 
 @tool(name="compare_results_csv")
 def compare_results_csv(gt_csv_path: str, pred_csv_path: str) -> dict:
-    """
-    多图像指标对比：从 GT 和预测 CSV 中读取指标，计算统计误差。
-    包括 MAE, MSE, R², MAPE, 平均相对误差（百分比）。
+    """Compare metrics from ground truth and prediction CSV files.
+
+    Calculates MAE, MSE, R², MAPE and average relative error (percent).
     """
     try:
         if not os.path.exists(gt_csv_path) or not os.path.exists(pred_csv_path):
-            raise FileNotFoundError("GT 或预测 CSV 文件不存在")
+            raise FileNotFoundError("Ground truth or prediction CSV not found")
 
         df_gt = pd.read_csv(gt_csv_path).set_index("Image")
         df_pred = pd.read_csv(pred_csv_path).set_index("Image")
 
-        # 对齐图像索引
+        # Align image indices
         df = df_gt.join(df_pred, lsuffix="_gt", rsuffix="_pred").dropna()
 
         if df.empty:
-            raise ValueError("无可比较图像，GT 与预测不匹配")
+            raise ValueError("No comparable images; GT and predictions do not match")
 
         metrics = {}
         for col in df_gt.columns:
@@ -53,7 +53,7 @@ def compare_results_csv(gt_csv_path: str, pred_csv_path: str) -> dict:
 
         return {
             "status": "success",
-            "summary": f"对比完成，处理图像数: {len(df)}",
+            "summary": f"Comparison completed for {len(df)} images",
             "outputs": metrics,
             "error": None
         }
@@ -61,7 +61,7 @@ def compare_results_csv(gt_csv_path: str, pred_csv_path: str) -> dict:
     except Exception as e:
         return {
             "status": "error",
-            "summary": "对比失败",
+            "summary": "Comparison failed",
             "outputs": None,
             "error": str(e)
         }
