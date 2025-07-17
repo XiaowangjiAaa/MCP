@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 #from mcp.server.fastmcp import tool
 from MCP.tool import tool
 
-# 可替换为真实装饰器
+# placeholder decorator
 def tool(name=None):
     def decorator(fn):
         return fn
@@ -13,9 +13,7 @@ def tool(name=None):
 
 @tool(name="plot_comparison_graphs")
 def plot_comparison_graphs(gt_csv_path: str, pred_csv_path: str, output_dir: str = "outputs/figures") -> dict:
-    """
-    绘制预测与GT的对比图（逐指标散点图 + 2x2组合图），并保存图像。
-    """
+    """Plot prediction vs GT scatter charts and save the figures."""
     try:
         os.makedirs(output_dir, exist_ok=True)
 
@@ -24,7 +22,7 @@ def plot_comparison_graphs(gt_csv_path: str, pred_csv_path: str, output_dir: str
         df = df_gt.join(df_pred, lsuffix="_gt", rsuffix="_pred").dropna()
 
         if df.empty:
-            raise ValueError("无可比较图像，GT 与预测不匹配")
+            raise ValueError("No comparable images; GT and prediction mismatch")
 
         metrics = [
             ("Length (mm)", "green", "length_comparison.png"),
@@ -43,7 +41,7 @@ def plot_comparison_graphs(gt_csv_path: str, pred_csv_path: str, output_dir: str
             y = df[f"{metric}_pred"]
             max_val = max(x.max(), y.max()) * 1.05
 
-            # 单图
+            # single plot
             fig, ax = plt.subplots(figsize=(5, 5))
             ax.scatter(x, y, color=color, s=10, alpha=0.7)
             ax.plot([0, max_val], [0, max_val], 'r--', linewidth=2)
@@ -59,7 +57,7 @@ def plot_comparison_graphs(gt_csv_path: str, pred_csv_path: str, output_dir: str
             plt.close(fig)
             saved_paths.append(single_path)
 
-            # 汇总图
+            # combined plot
             ax_all = axes_all.flat[i]
             ax_all.scatter(x, y, color=color, s=10, alpha=0.7)
             ax_all.plot([0, max_val], [0, max_val], 'r--', linewidth=2)
@@ -77,7 +75,7 @@ def plot_comparison_graphs(gt_csv_path: str, pred_csv_path: str, output_dir: str
 
         return {
             "status": "success",
-            "summary": f"图像保存至 {output_dir}",
+            "summary": f"Figures saved to {output_dir}",
             "outputs": {
                 "individual_plots": saved_paths[:-1],
                 "combined_plot": combined_path
@@ -88,7 +86,7 @@ def plot_comparison_graphs(gt_csv_path: str, pred_csv_path: str, output_dir: str
     except Exception as e:
         return {
             "status": "error",
-            "summary": "绘图失败",
+            "summary": "Plotting failed",
             "outputs": None,
             "error": str(e)
         }

@@ -24,9 +24,7 @@ class ChatLogger:
         self._write_entry("agent", message)
 
     def log_agent_structured(self, data: dict):
-        """
-        结构化记录 Agent 行为，包括意图、图像、计划、结果等
-        """
+        """Record structured agent behaviour including intent, images, plan and results."""
         data["timestamp"] = datetime.utcnow().isoformat()
         data["role"] = "agent"
         with open(self.log_path, "a", encoding="utf-8") as f:

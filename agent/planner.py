@@ -11,9 +11,9 @@ from agent.nlp_parser import parse_visual_types_from_text
 
 
 def generate_plan(user_input: str, memory: Dict = None) -> List[Dict]:
-    """
-    基于规则和自然语言分析生成工具调用计划。
-    支持 segment、quantify、generate（原 save）、compare、visualize、chat 等任务识别。
+    """Generate a tool invocation plan based on rules and natural language.
+
+    Supports tasks: segment, quantify, generate (save), compare, visualize and chat.
     """
     user_input = user_input.lower()
     plan = []
@@ -117,7 +117,7 @@ def generate_plan(user_input: str, memory: Dict = None) -> List[Dict]:
         visual_types = parse_visual_types_from_text(user_input)
 
         if not visual_types:
-            print("❌ 用户未指定需要展示的图层，visualize 跳过")
+            print("❌ visual_types not specified; skipping visualize")
         else:
             for name in selected:
                 plan.append({

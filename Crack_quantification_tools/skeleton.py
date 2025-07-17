@@ -7,29 +7,33 @@ from skimage.morphology import thin, remove_small_objects
 
 
 def extract_skeleton_and_normals(mask: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Extract the skeleton of a crack mask and return placeholder normals.
+
+    This simplified routine follows the provided script and performs
+    ``thin`` and ``remove_small_objects`` cleanup.
+
+    Args:
+        mask: Binary mask where the crack is 1 and background is 0.
+
+    Returns:
+        skeleton_mask: binary skeleton image (0/1).
+        skeleton_points: (N, 2) array of skeleton coordinates [x, y].
+        normals: zeros placeholder kept for API compatibility.
     """
-    使用简洁版骨架化方法（学习自你提供的脚本），结合 thin + remove_small_objects 清理。
-    输入：
-        mask: 二值掩膜图，背景为 0，裂缝区域为 1
-    返回：
-        skeleton_mask: 骨架二值图（0/1）
-        skeleton_points: (N, 2) 骨架点坐标 [x, y]
-        normals: 全为零数组（占位，为接口兼容性保留）
-    """
-    # Step 1: 骨架提取（你提供的方法）
+    # Step 1: extract the skeleton
     skeleton = skeletonize(mask > 0)
 
-    # Step 2: 可选进一步细化（你参考中使用了 thin）
+    # Step 2: optional refinement using ``thin``
     skeleton = thin(skeleton)
 
-    # Step 3: 去除小杂点
+    # Step 3: remove small artifacts
     skeleton = remove_small_objects(skeleton, min_size=1)
 
-    # Step 4: 提取骨架点
+    # Step 4: obtain skeleton points
     ys, xs = np.where(skeleton > 0)
     skeleton_points = np.stack([xs, ys], axis=1)
 
-    # Step 5: 返回值（兼容原函数格式）
+    # Step 5: return values
     skeleton_mask = skeleton.astype(np.uint8)
-    normals = np.zeros_like(skeleton_points, dtype=np.float32)  # 占位
+    normals = np.zeros_like(skeleton_points, dtype=np.float32)
     return skeleton_mask, skeleton_points, normals

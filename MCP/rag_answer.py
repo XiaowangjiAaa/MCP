@@ -13,7 +13,7 @@ def detect_lang(text: str) -> str:
         lang = detect(text)
         return "zh" if "zh" in lang else "en"
     except:
-        return "zh"  # 默认中文
+        return "zh"  # default to Chinese
 
 
 def format_context(contexts: List[dict], lang: str) -> str:
@@ -22,41 +22,41 @@ def format_context(contexts: List[dict], lang: str) -> str:
 
     lines = []
     for i, chunk in enumerate(contexts, 1):
-        source = chunk.get("source", "未知")
+        source = chunk.get("source", "unknown")
         section = chunk.get(section_key, "N/A")
         text = chunk.get(text_key, "").strip()
-        lines.append(f"[{i}] 来源: {source} | 章节: {section}\n{text}")
+        lines.append(f"[{i}] Source: {source} | Section: {section}\n{text}")
     return "\n\n".join(lines)
 
 
 @tool(name="rag_answer")
 def rag_answer(query: str, lang: Optional[str] = "auto", top_k: int = 5, model: str = "gpt-4") -> dict:
-    # 自动检测语言
+    # auto-detect language
     detected_lang = detect_lang(query) if lang == "auto" else lang
 
-    # 检索段落
+    # retrieve relevant paragraphs
     contexts = retrieve_context(query, lang=detected_lang, top_k=top_k)
 
-    # ⚠️ 打印检索内容（调试用）
-    print("\n====== [🔍 RAG 检索到的段落] ======")
+    # ⚠️ print retrieved content (debug)
+    print("\n====== [🔍 Retrieved paragraphs] ======")
     print(format_context(contexts, detected_lang))
     print("====================================\n")
 
-    # 构建 prompt
+    # build prompt
     context_text = format_context(contexts, detected_lang)
     if detected_lang == "zh":
         prompt = f"""
-你是一位专业结构工程助手，下面是知识库中检索到的相关段落。
+You are a professional structural engineering assistant. Below are relevant paragraphs retrieved from the knowledge base.
 
-请你仅根据这些资料内容回答用户问题，如果没有提及，请明确说明“资料未包含该信息”。
+Answer the user's question only using this material. If it is not mentioned, clearly state "The material does not contain this information."
 
-== 知识库段落 ==
+== Knowledge Base Paragraphs ==
 {context_text}
 
-== 用户问题 ==
+== User Question ==
 {query}
 
-== 回答 ==
+== Answer ==
 """
     else:
         prompt = f"""
@@ -75,7 +75,7 @@ You may summarize or rephrase content, but do not invent or hallucinate.
 == Your Answer ==
 """
 
-    # GPT 生成回答
+    # generate answer with GPT
     response = client.chat.completions.create(
         model=model,
         messages=[{"role": "user", "content": prompt}],
@@ -85,7 +85,7 @@ You may summarize or rephrase content, but do not invent or hallucinate.
 
     return {
         "status": "success",
-        "summary": "基于知识库完成问答",
+        "summary": "Answered using the knowledge base",
         "outputs": {
             "answer": answer
         },

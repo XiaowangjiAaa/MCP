@@ -194,9 +194,9 @@ class MemoryController:
             self.filepath.unlink()
 
     def get_visualization_path(self, subject_name: str, visual_type: str) -> str:
-        """
-        从 observation 中提取视觉图路径，自动匹配 *_overlay 字段。
-        例如 visual_type="max_width" → 查找 "max_width_overlay"
+        """Retrieve a visualization path from observations.
+
+        Automatically matches the ``*_overlay`` field, e.g. ``visual_type='max_width'`` searches for ``max_width_overlay``.
         """
         overlay_key = f"{visual_type}_overlay"
 

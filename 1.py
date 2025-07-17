@@ -11,12 +11,12 @@ def format_context(contexts: List[dict], lang: str) -> str:
 
     lines = []
     for i, chunk in enumerate(contexts, 1):
-        source = chunk.get("source", "未知")
+        source = chunk.get("source", "unknown")
         section = chunk.get(section_key, "N/A")
         text = chunk.get(text_key, "").strip()
-        lines.append(f"[{i}] 来源: {source} | 章节: {section}\n{text}")
+        lines.append(f"[{i}] Source: {source} | Section: {section}\n{text}")
     return "\n\n".join(lines)
 
 
-print("🔍 检索段落数：", len(results))
+print("🔍 Retrieved paragraphs:", len(results))
 print(format_context(results, lang="en"))

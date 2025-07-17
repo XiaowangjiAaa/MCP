@@ -21,22 +21,23 @@ def quantify_crack_geometry(
     metrics: list = None,
     visuals: list = None
 ) -> dict:
-    """
-    裂缝图像量化工具，支持选择性计算和可视化，并将结果写入 CSV。
+    """Crack image quantification tool with optional visualization.
+
+    Selected metrics are computed and written to CSV.
     """
     try:
         if not os.path.exists(mask_path):
             raise FileNotFoundError(f"Mask not found: {mask_path}")
 
-        # ✅ 原始图像（用于可视化）
+        # original image for visualization
         img_raw = cv2.imread(mask_path)
         if img_raw is None:
             raise ValueError(f"Invalid image format: {mask_path}")
 
-        # ✅ 二值化图像（用于分析）
+        # binarize image for analysis
         mask = binarize(img_raw)
 
-        # ✅ 量化指标计算
+        # compute metrics
         all_metrics = {
             "Length (mm)": lambda: round(compute_crack_length_px(mask) * pixel_size_mm, 2),
             "Area (mm^2)": lambda: round(compute_crack_area_px(mask) * pixel_size_mm ** 2, 2),
@@ -60,29 +61,29 @@ def quantify_crack_geometry(
                     if m.lower().replace(" ", "").replace("_", "") in k.lower().replace(" ", "").replace("_", ""):
                         selected_metrics.append(k)
 
-        print(f"\U0001F4D0 最终启用指标: {selected_metrics}")
+        print(f"\U0001F4D0 selected metrics: {selected_metrics}")
 
         results = {
             metric_alias_map[name]: all_metrics[name]() for name in selected_metrics
         }
 
-        # ✅ 写入 CSV（保留原始带单位的列名）
+        # write to CSV (keep original column names with units)
         results_for_csv = {name: all_metrics[name]() for name in selected_metrics}
         image_name = os.path.splitext(os.path.basename(mask_path))[0]
         os.makedirs("outputs/csv", exist_ok=True)
         append_to_csv("outputs/csv/predicted_metrics.csv", image_name, results_for_csv)
 
-        # ✅ 可视化结果
+        # visualization results
         vis_results = {}
         if visuals:
             image_base = os.path.splitext(os.path.basename(mask_path))[0]
             visual_dir = os.path.join("outputs", "visuals")
             os.makedirs(visual_dir, exist_ok=True)
 
-            # ✅ 骨架与法向
+            # skeleton and normals
             _, centers, normals = extract_skeleton_and_normals(mask)
 
-            # 1. 骨架点（红色点）
+            # 1. skeleton points (red)
             if "skeleton" in visuals or "all" in visuals:
                 overlay = img_raw.copy()
                 for pt in centers:
@@ -91,7 +92,7 @@ def quantify_crack_geometry(
                 path = save_visual(overlay, os.path.join(visual_dir, f"{image_base}_skeleton.png"))
                 vis_results["skeleton_overlay"] = path
 
-            # 2. 法向箭头（绿色线段）
+            # 2. normal vectors (green lines)
             if "normals" in visuals or "all" in visuals:
                 normal_overlay = img_raw.copy()
                 for pt, n in zip(centers, normals):
@@ -102,7 +103,7 @@ def quantify_crack_geometry(
                 path = save_visual(normal_overlay, os.path.join(visual_dir, f"{image_base}_skeleton_normals.png"))
                 vis_results["skeleton_normals"] = path
 
-            # 3. 最大宽度线段（背景为原图）
+            # 3. maximum width line (overlaid on original image)
             if "max_width" in visuals or "all" in visuals:
                 vis_width, max_width = visualize_max_width(img_raw)
                 path = save_visual(vis_width, os.path.join(visual_dir, f"{image_base}_max_width.png"))
@@ -110,7 +111,7 @@ def quantify_crack_geometry(
 
         return {
             "status": "success",
-            "summary": f"量化完成，计算 {len(results)} 项，可视化图 {len(vis_results)} 张",
+            "summary": f"Quantification complete: {len(results)} metrics, {len(vis_results)} visuals",
             "outputs": results,
             "visualizations": vis_results,
             "error": None
@@ -118,13 +119,13 @@ def quantify_crack_geometry(
 
     except Exception as e:
         try:
-            print("[❗] quantify_crack_geometry 捕获异常:", str(e))
+            print("[❗] quantify_crack_geometry caught exception:", str(e))
             traceback.print_exc()
         except Exception as log_error:
-            print("[❗] ERROR 打印 traceback 时出错:", str(log_error))
+            print("[❗] ERROR printing traceback:", str(log_error))
         return {
             "status": "error",
-            "summary": "量化失败",
+            "summary": "Quantification failed",
             "outputs": None,
             "visualizations": None,
             "error": str(e)
