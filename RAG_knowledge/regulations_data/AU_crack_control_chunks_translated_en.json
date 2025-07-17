@@ -1,0 +1,184 @@
+[
+  {
+    "text_zh": "用于储存水或液体的混凝土结构要求极为严苛的裂缝控制，以确保水密性。AS 3735-2001并未直接给出明确的最大裂缝宽度值，但通过限值设计使裂缝保持在发丝状范围内。标准的附录注释指出，对于持续浸水的混凝土表面，设计应使平均裂缝宽度不超过约0.1 mm，而在仅间歇性受液体浸润/干燥的表面（如结构外侧）同样要求0.1 mm的限值。对于持续受液体面内的弯曲裂缝，允许的平均宽度略高，可达约0.15 mm，但仅适用于无干湿交替的情况。",
+    "text_en": "Concrete structures used for storing water or liquids require extremely stringent crack control to ensure water tightness. AS 3735-2001 does not directly provide a clear maximum crack width value, but it maintains the crack within the hairline range through limit design. The appendix notes of the standard point out that for concrete surfaces continuously submerged in water, the design should ensure that the average crack width does not exceed approximately 0.1 mm, and the same limit of 0.1 mm is required for surfaces intermittently exposed to liquid wetting/drying (such as the exterior of the structure). For bending cracks continuously exposed to liquid inside, the allowable average width is slightly higher, up to approximately 0.15 mm, but this is only applicable in situations without alternating dry and wet conditions.",
+    "source": "AS 3735",
+    "section_zh": "最大允许裂缝宽度",
+    "section_en": "Maximum Allowable Crack Width",
+    "structure_type_zh": "液体储存结构",
+    "structure_type_en": "Liquid Storage Structure",
+    "tags": [
+      "crack_width",
+      "storage",
+      "AS3735"
+    ]
+  },
+
+  {
+  "text_zh": "AS 3735要求提供足够的最小配筋率以限制收缩和温度引起的开裂。对于自由收缩混凝土，最小配筋率按公式 p_min = f_ct.3 / f_sy 确定。对于完全约束的结构，则参照表3.1按钢筋直径确定最小配筋率，范围大约从0.48%到1.28%。通过设置伸缩缝可降低配筋要求（如15m间距伸缩缝可降低约25%）。这些要求旨在促使裂缝分布更细密、均匀，避免出现宽裂缝。",
+  "text_en": "AS 3735 requires the provision of sufficient minimum reinforcement ratios to limit cracking caused by shrinkage and temperature. For free shrinkage concrete, the minimum reinforcement ratio is determined by the formula p_min = f_ct.3 / f_sy. For fully constrained structures, the minimum reinforcement ratio is determined by the rebar diameter according to Table 3.1, with a range from approximately 0.48% to 1.28%. The reinforcement requirements can be reduced by setting expansion joints (for example, a 15m spacing expansion joint can reduce about 25%). These requirements aim to promote a finer, more uniform distribution of cracks, avoiding the occurrence of wide cracks.",
+  "source": "AS 3735",
+  "section_zh": "配筋率要求",
+  "section_en": "Minimum Reinforcement Ratio",
+  "structure_type_zh": "液体储存结构",
+  "structure_type_en": "Liquid Storage Structure",
+  "tags": [
+    "reinforcement_ratio",
+    "shrinkage",
+    "AS3735"
+  ]
+  },
+
+  {
+  "text_zh": "为控制裂缝宽度，AS 3735对钢筋的使用应力进行了限值控制。服务应力限值计算公式为：f_s,max = f_s0 × Y1 × Y2 × Y3，其中 f_s0 与钢筋直径有关（8–12 mm为150 MPa，16 mm为140 MPa 等）；Y1 为钢筋类型系数，变形钢筋为1.0；Y2 为荷载系数（短期荷载允许更高）；Y3 为暴露条件系数。持续水浸环境中弯曲和拉力允许 Y3=1.25，而干湿交替则不能放宽（Y3=1.0）。典型限值为130–150 MPa，控制裂缝宽度在0.1 mm左右。",
+  "text_en": "To control crack width, AS 3735 imposes limit controls on the stress applied to the reinforcement bars. The formula for calculating the service stress limit is: f_s,max = f_s0 × Y1 × Y2 × Y3, where f_s0 is related to the diameter of the reinforcement bar (150 MPa for 8–12 mm, 140 MPa for 16 mm, etc.); Y1 is the coefficient for the type of reinforcement bar, with deformed bars being 1.0; Y2 is the load factor (allowing for higher short-term loads); Y3 is the exposure condition factor. In a continuous water immersion environment, bending and tension allow for Y3 = 1.25, while in alternating dry and wet conditions, it cannot be relaxed (Y3 = 1.0). The typical limit is 130–150 MPa, controlling the crack width to around 0.1 mm.",
+  "source": "AS 3735",
+  "section_zh": "钢筋应力限制",
+  "section_en": "Reinforcement Stress Limit",
+  "structure_type_zh": "液体储存结构",
+  "structure_type_en": "Liquid Storage Structure",
+  "tags": [
+    "steel_stress",
+    "crack_control",
+    "AS3735"
+  ]
+  },
+
+  {
+  "text_zh": "AS 3735针对暴露条件提出不同裂缝限值：持续浸水面可接受弯曲裂缝达0.15 mm，而外露面（或干湿交替）需控制在0.1 mm内。Y3 系数体现这种环境区分，持续水浸允许应力放宽（Y3=1.25），但干湿交替则不得放宽（Y3=1.0）。因此内侧裂缝控制稍宽松，外侧需严格抑制裂缝发展以防腐蚀。",
+  "text_en": "AS 3735 proposes different crack limits for various exposure conditions: a bending crack of up to 0.15 mm is acceptable for continuously submerged surfaces, while for exposed surfaces (or alternating dry and wet conditions) it must be controlled within 0.1 mm. The Y3 coefficient reflects this environmental distinction, allowing for relaxed stress in continuous submersion (Y3 = 1.25), but not in alternating dry and wet conditions (Y3 = 1.0). Therefore, the control of internal cracks is slightly more lenient, while the development of external cracks needs to be strictly suppressed to prevent corrosion.",
+  "source": "AS 3735",
+  "section_zh": "暴露条件影响",
+  "section_en": "Exposure Condition Impact",
+  "structure_type_zh": "液体储存结构",
+  "structure_type_en": "Liquid Storage Structure",
+  "tags": [
+    "exposure",
+    "liquid",
+    "crack_limit",
+    "AS3735"
+  ]
+  },
+
+  {
+  "text_zh": "AS 5100.5-2017未直接规定裂缝限值，但推荐普通环境下不超过0.3 mm。维多利亚州道路局指南规定温和环境（A、B1）上限为0.30 mm，严酷环境（B2、C1、C2）限于0.25 mm，极端环境可能低于0.2 mm。裂缝控制随暴露等级增强，以保障长期耐久性与防腐蚀性能。",
+  "text_en": "The AS 5100.5-2017 does not directly specify crack limit values, but it recommends that under normal conditions, it should not exceed 0.3 mm. The guidelines set by the Victoria State Road Bureau stipulate that the upper limit in mild environments (A, B1) is 0.30 mm, while in harsh environments (B2, C1, C2) it is limited to 0.25 mm, and in extreme conditions, it may be less than 0.2 mm. Crack control increases with exposure level to ensure long-term durability and corrosion resistance.",
+  "source": "AS 5100.5",
+  "section_zh": "最大允许裂缝宽度",
+  "section_en": "Maximum Allowable Crack Width",
+  "structure_type_zh": "桥梁结构",
+  "structure_type_en": "Bridge Structure",
+  "tags": [
+    "crack_width",
+    "exposure",
+    "bridge",
+    "AS5100.5"
+  ]
+  },
+
+  {
+  "text_zh": "桥梁结构最小配筋规定：构件厚度≤150 mm时每面每方向≥500 mm²/m，厚度>150 mm时两侧各配一层。钢筋间距≤300 mm。深梁则要求侧面纵筋（如Φ12@200mm）。这些配筋标准确保收缩温度裂缝得以抑制。",
+  "text_en": "Minimum reinforcement requirements for bridge structures: For components with a thickness ≤150 mm, each side and each direction should have ≥500 mm²/m of reinforcement. For components with a thickness >150 mm, a layer of reinforcement should be provided on each side. The spacing between the rebars should be ≤300 mm. Deep beams require side longitudinal reinforcement (such as Φ12@200mm). These reinforcement standards ensure the suppression of shrinkage temperature cracks.",
+  "source": "AS 5100.5",
+  "section_zh": "配筋率要求",
+  "section_en": "Minimum Reinforcement Ratio",
+  "structure_type_zh": "桥梁结构",
+  "structure_type_en": "Bridge Structure",
+  "tags": [
+    "reinforcement",
+    "minimum_ratio",
+    "bridge",
+    "AS5100.5"
+  ]
+  },
+
+  {
+  "text_zh": "AS 5100.5 对钢筋服务应力进行限值控制：依据钢筋直径和间距取两个限值中较小值（如16 mm钢筋对应约240 MPa）。严酷暴露等级（B2/C1/C2/U）下需在“仅永久荷载”组合下复核应力，进一步降低限值。确保在恶劣环境下裂缝仍可被有效抑制。",
+  "text_en": "AS 5100.5 imposes limit state control on the service stress of reinforcement bars: the smaller value is chosen based on the diameter and spacing of the reinforcement bars (for example, a 16 mm rebar corresponds to approximately 240 MPa). Under severe exposure levels (B2/C1/C2/U), stress must be checked under the \"permanent load only\" combination, further reducing the limit value. This ensures that cracks can still be effectively suppressed under harsh environmental conditions.",
+  "source": "AS 5100.5",
+  "section_zh": "钢筋应力限制",
+  "section_en": "Reinforcement Stress Limit",
+  "structure_type_zh": "桥梁结构",
+  "structure_type_en": "Bridge Structure",
+  "tags": [
+    "steel_stress",
+    "durability",
+    "AS5100.5"
+  ]
+  },
+
+  {
+  "text_zh": "桥梁设计必须依据环境暴露等级调整裂缝控制标准。普通环境允许0.3 mm，海岸/工业区域建议≤0.25 mm，严酷条件需更低限值并辅以细节构造控制（如保护层、收缩筋）。预应力构件在高暴露区必须维持受压状态。",
+  "text_en": "Bridge design must adjust crack control standards based on environmental exposure levels. A general environment allows for 0.3 mm, while coastal/industrial areas recommend ≤0.25 mm. Harsher conditions require lower limits and are supplemented with detailed construction control (such as protective layers, shrinkage reinforcement). Prestressed components must maintain a state of compression in high exposure areas.",
+  "source": "AS 5100.5",
+  "section_zh": "暴露条件影响",
+  "section_en": "Exposure Condition Impact",
+  "structure_type_zh": "桥梁结构",
+  "structure_type_en": "Bridge Structure",
+  "tags": [
+    "exposure",
+    "corrosion",
+    "prestress",
+    "AS5100.5"
+  ]
+  },
+
+  {
+  "text_zh": "AS 3600-2018 允许设计者选择三档最大特征裂缝宽度：0.4 mm（宽松）、0.3 mm（常规）、0.2 mm（严苛）。用于室内楼板时可选0.4 mm；潮湿或腐蚀环境下应选更小限值。裂缝宽度选项直接决定后续配筋和应力控制要求。",
+  "text_en": "AS 3600-2018 allows designers to choose from three maximum characteristic crack widths: 0.4 mm (loose), 0.3 mm (regular), and 0.2 mm (strict). The 0.4 mm option can be chosen for indoor floor slabs; a smaller limit should be selected in damp or corrosive environments. The choice of crack width directly determines the subsequent requirements for reinforcement and stress control.",
+  "source": "AS 3600",
+  "section_zh": "最大允许裂缝宽度",
+  "section_en": "Maximum Allowable Crack Width",
+  "structure_type_zh": "一般建筑结构",
+  "structure_type_en": "General Building Structure",
+  "tags": [
+    "crack_width",
+    "standard",
+    "AS3600"
+  ]
+  },
+
+  {
+  "text_zh": "AS 3600 针对受弯构件规定：极限弯矩≥开裂弯矩×1.2；受拉钢筋距受拉表面≤100 mm；钢筋间距≤300 mm。双向板对收缩裂缝的最小配筋由公式ρ_min = C*(D/d)^2*(f_ct/f_sy)给出，C视边界约束条件而定。",
+  "text_en": "AS 3600 specifies for bending members: the limit bending moment should be greater than or equal to 1.2 times the cracking bending moment; the distance from the tensile reinforcement to the tensile surface should be less than or equal to 100 mm; the spacing between reinforcements should be less than or equal to 300 mm. The minimum reinforcement for shrinkage cracks in two-way slabs is given by the formula ρ_min = C*(D/d)^2*(f_ct/f_sy), where C depends on the boundary constraint conditions.",
+  "source": "AS 3600",
+  "section_zh": "配筋率要求",
+  "section_en": "Minimum Reinforcement Ratio",
+  "structure_type_zh": "一般建筑结构",
+  "structure_type_en": "General Building Structure",
+  "tags": [
+    "reinforcement",
+    "crack_control",
+    "AS3600"
+  ]
+  },
+
+  {
+  "text_zh": "AS 3600 表8.6.2.2给出钢筋应力限值，按钢筋直径与间距决定。若设计选用更小的裂缝宽度目标值（如0.2 mm），对应更低的钢筋应力限值（如Φ20 时仅允许约170 MPa）。应同时满足表A与表B中较小值。",
+  "text_en": "AS 3600 Table 8.6.2.2 provides the stress limit values for reinforcement, determined by the diameter and spacing of the reinforcement. If a design opts for a smaller target value for crack width (such as 0.2 mm), it corresponds to a lower stress limit value for the reinforcement (for instance, only about 170 MPa is allowed when the diameter is 20 mm). Both Table A and Table B's smaller values should be satisfied simultaneously.",
+  "source": "AS 3600",
+  "section_zh": "钢筋应力限制",
+  "section_en": "Reinforcement Stress Limit",
+  "structure_type_zh": "一般建筑结构",
+  "structure_type_en": "General Building Structure",
+  "tags": [
+    "steel_stress",
+    "width_limit",
+    "AS3600"
+  ]
+  },
+
+  {
+  "text_zh": "AS 3600 根据暴露等级推荐不同裂缝控制目标值：A1（室内）可容许0.4 mm；B1（室外）推荐0.3 mm；C1/C2 或沿海、腐蚀环境需采用0.2 mm 限值。同时要求提高强度等级与构造措施配合。",
+  "text_en": "AS 3600 recommends different crack control target values based on exposure levels: A1 (indoor) allows 0.4 mm; B1 (outdoor) recommends 0.3 mm; C1/C2 or coastal, corrosive environments require a limit of 0.2 mm. It also requires the enhancement of strength grades in conjunction with construction measures.",
+  "source": "AS 3600",
+  "section_zh": "暴露条件影响",
+  "section_en": "Exposure Condition Impact",
+  "structure_type_zh": "一般建筑结构",
+  "structure_type_en": "General Building Structure",
+  "tags": [
+    "exposure",
+    "environment",
+    "AS3600"
+  ]
+  }]

@@ -1,0 +1,136 @@
+[
+    {
+  "text_zh": "ACI 318 对一般梁板提出裂缝宽度控制要求：受拉区最外侧钢筋的最大间距 s 应满足公式 s = 2.5 c_c + (380 mm * (280 MPa / f_s))，且不得超过 300 mm * (280 MPa / f_s):contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}。其中 c_c 为钢筋表面至受拉混凝土表面的距离，f_s 为使用荷载下钢筋应力（可按 f_s = 2/3 f_y 取值:contentReference[oaicite:2]{index=2}）。按此规定，常用 50 mm保护层、Grade 420钢筋服务应力约280 MPa时，钢筋间距上限约为250 mm:contentReference[oaicite:3]{index=3}:contentReference[oaicite:4]{index=4}。",
+  "text_en": "ACI 318 specifies crack width control for general beams and slabs: the maximum spacing s of reinforcement nearest the tension face must satisfy s = 2.5 c_c + (380 mm * (280 MPa / f_s)), and not exceed 300 mm * (280 MPa / f_s):contentReference[oaicite:5]{index=5}:contentReference[oaicite:6]{index=6}. Here c_c is the cover from bar surface to the tension face, and f_s is the steel stress under service loads (permitted to take f_s = 2/3 f_y:contentReference[oaicite:7]{index=7}). With typical 50 mm cover and Grade 420 steel (service stress ~280 MPa), this yields a spacing limit around 250 mm:contentReference[oaicite:8]{index=8}:contentReference[oaicite:9]{index=9}.",
+  "source": "ACI 318",
+  "section_zh": "挠曲裂缝宽度控制",
+  "section_en": "Flexural Crack Width Control",
+  "structure_type_zh": "一般建筑结构",
+  "structure_type_en": "General Building Structure",
+  "tags": [
+    "crack_control",
+    "reinforcement_spacing",
+    "ACI318"
+  ]
+},
+
+{
+  "text_zh": "当结构处于严酷环境或需满足抗渗要求时，ACI 318 指出常规裂缝控制措施可能不足，应进行特殊分析和措施:contentReference[oaicite:10]{index=10}。一般情况下代码基于约0.4 mm的可接受裂缝宽度进行设计:contentReference[oaicite:11]{index=11}；若要求更小裂缝（如水密结构），需通过提高配筋量、降低服务应力或减小钢筋间距等方法进一步限制裂缝宽度:contentReference[oaicite:12]{index=12}:contentReference[oaicite:13]{index=13}。这种情况下，可考虑将钢筋服务应力限值降低（例如远低于2/3 f_y），并采用更严的裂缝宽度准则。",
+  "text_en": "For very aggressive exposures or watertight structures, ACI 318 warns that the standard crack control provisions are not sufficient and special investigations and precautions are required:contentReference[oaicite:14]{index=14}. In normal conditions the code’s spacing rules target an acceptable crack width of roughly 0.4 mm:contentReference[oaicite:15]{index=15}; if a smaller crack width is needed (e.g. in liquid-tight structures), measures such as increasing reinforcement, reducing steel stress at service, or using closer spaced smaller bars must be employed to further limit cracks:contentReference[oaicite:16]{index=16}:contentReference[oaicite:17]{index=17}. In practice this means using a lower allowable service stress for reinforcement (well below the usual 2/3 f_y) and stricter crack width criteria.",
+  "source": "ACI 318",
+  "section_zh": "严酷环境下的裂缝控制",
+  "section_en": "Crack Control for Severe Exposure",
+  "structure_type_zh": "一般建筑结构",
+  "structure_type_en": "General Building Structure",
+  "tags": [
+    "crack_control",
+    "aggressive_exposure",
+    "ACI318"
+  ]
+},
+
+{
+  "text_zh": "ACI 318 要求板和基础中配置最低配筋率以限制收缩裂缝。对现浇板（均匀厚度），温缩钢筋面积不小于 0.0018bh（Grade 420钢筋）:contentReference[oaicite:18]{index=18}:contentReference[oaicite:19]{index=19}（较低强度钢筋则为0.0020bh）。若钢筋屈服强度超过420 MPa，则最低配筋率可降至0.0014bh（或0.0018*420/f_y，但不低于0.0014）:contentReference[oaicite:20]{index=20}。此温缩钢筋的间距不得大于板厚的3倍且不超过450 mm:contentReference[oaicite:21]{index=21}。对于双向板，主筋间距限制为不超过2倍板厚:contentReference[oaicite:22]{index=22}。这些要求确保混凝土收缩和温度裂缝的宽度受到控制。",
+  "text_en": "ACI 318 mandates minimum reinforcement in slabs and footings to control shrinkage cracks. For cast-in-place slabs of uniform thickness, the temperature-shrinkage reinforcement area must be at least 0.0018 b*h for Grade 420 steel:contentReference[oaicite:23]{index=23}:contentReference[oaicite:24]{index=24} (0.0020 b*h for lower grade bars). If reinforcement yield strength exceeds 420 MPa, the minimum ratio can be reduced to 0.0014 b*h (or 0.0018*420/f_y, not less than 0.0014):contentReference[oaicite:25]{index=25}. The spacing of this shrinkage reinforcement shall not exceed three times the slab thickness or 450 mm:contentReference[oaicite:26]{index=26}. In two-way slabs, principal bars must be spaced no more than two times the slab thickness:contentReference[oaicite:27]{index=27}. These requirements ensure crack widths from concrete shrinkage and temperature are controlled.",
+  "source": "ACI 318",
+  "section_zh": "温度收缩配筋及间距",
+  "section_en": "Shrinkage Reinforcement and Spacing",
+  "structure_type_zh": "一般建筑结构",
+  "structure_type_en": "General Building Structure",
+  "tags": [
+    "shrinkage_crack",
+    "min_reinforcement",
+    "ACI318"
+  ]
+},
+
+{
+  "text_zh": "ACI 318 对钢筋布置有几何要求，以保证施工质量和裂缝控制：平行钢筋的最小净距应不小于钢筋直径或25 mm:contentReference[oaicite:28]{index=28}。分层布筋时，上层钢筋应垂直对齐下层钢筋，层间净距不小于25 mm:contentReference[oaicite:29]{index=29}。保护层方面，柱梁主筋的混凝土保护层一般不小于40 mm（室内）或50 mm（暴露于天气）:contentReference[oaicite:30]{index=30}；大型基础或靠土浇筑构件主筋保护层规定为76 mm:contentReference[oaicite:31]{index=31}。板和墙内的钢筋保护层可取20 mm（室内不暴露时）至40 mm（暴露环境）范围，满足耐久性要求。上述几何限制确保钢筋有足够包裹混凝土及施工间隙，进而有助于控制裂缝和防止钢筋锈蚀。",
+  "text_en": "ACI 318 specifies geometric limits on bar placement to ensure constructability and crack control: The minimum clear spacing between parallel bars must be at least one bar diameter or 25 mm:contentReference[oaicite:32]{index=32}. When bars are in multiple layers, bars in the upper layer should align over those below with a clear space of at least 25 mm between layers:contentReference[oaicite:33]{index=33}. For concrete cover, typical minimum cover to main bars in beams and columns is about 40 mm for interior surfaces and 50 mm for surfaces exposed to weather:contentReference[oaicite:34]{index=34}; for large footings or members cast against earth, a 76 mm cover is required:contentReference[oaicite:35]{index=35}. In slabs and walls, cover can range from about 20 mm (for interior, protected conditions) to 40 mm (for exterior exposure) to meet durability criteria. These geometric limits ensure adequate concrete encasement and spacing, helping control crack width and prevent rebar corrosion.",
+  "source": "ACI 318",
+  "section_zh": "钢筋净距与保护层",
+  "section_en": "Bar Spacing and Concrete Cover",
+  "structure_type_zh": "一般建筑结构",
+  "structure_type_en": "General Building Structure",
+  "tags": [
+    "cover",
+    "bar_spacing",
+    "ACI318"
+  ]
+},
+
+{
+  "text_zh": "ACI 318 规定梁柱箍筋的最大间距限制以保证结构延性和裂缝控制。对一般梁的抗剪箍筋，间距不得超过有效深度 d 的一半，且不大于600 mm:contentReference[oaicite:36]{index=36}。对普通受压构件（非抗震），纵筋箍筋的竖向间距不得超出16倍纵筋直径、48倍箍筋直径及构件最小截面尺寸中的最小值:contentReference[oaicite:37]{index=37}。此外，为确保梁受压区及腹板裂缝受控，对于梁高超过400 mm者，要求在梁受拉侧侧面配置\"肤筋\"，其间距同样满足上述裂缝控制公式（h/2高度范围内）:contentReference[oaicite:38]{index=38}。这些间距限制减少了裂缝宽度，增强了构件延性。",
+  "text_en": "ACI 318 imposes maximum stirrup/tie spacing limits to ensure ductility and crack control. For shear reinforcement in ordinary beams, the spacing shall not exceed one-half the effective depth d of the member, and not more than 600 mm:contentReference[oaicite:39]{index=39}. For non-seismic columns or compression members, vertical tie spacing must not exceed the least of 16 longitudinal bar diameters, 48 tie bar diameters, or the least cross-sectional dimension:contentReference[oaicite:40]{index=40}. Additionally, to control cracks in deep beams, any beam over 400 mm deep requires side-face “skin” reinforcement along the web, with spacing satisfying the same crack control formula (within h/2 from the tension face):contentReference[oaicite:41]{index=41}. These spacing limits reduce crack widths and improve member ductility.",
+  "source": "ACI 318",
+  "section_zh": "箍筋间距限制",
+  "section_en": "Shear/Confinement Reinforcement Spacing",
+  "structure_type_zh": "一般建筑结构",
+  "structure_type_en": "General Building Structure",
+  "tags": [
+    "shear_reinforcement",
+    "spacing_limit",
+    "ACI318"
+  ]
+},
+
+{
+  "text_zh": "对于抗震设计的特殊时刻框架梁，ACI 318 要求在塑性铰区内设置紧密箍筋。梁端从柱面起2h范围内，箍筋间距不得大于以下最小值：d/4、6倍最小纵筋直径（若用Grade 80钢筋则5倍直径）、以及150 mm:contentReference[oaicite:42]{index=42}:contentReference[oaicite:43]{index=43}。第一道箍筋距离柱面的净距不超过50 mm:contentReference[oaicite:44]{index=44}。在此塑性铰区域外，其余梁段的箍筋也需带抗震弯钩且间距不超过d/2:contentReference[oaicite:45]{index=45}。这些规定保证梁在大震时形成多个小裂缝而非少数宽裂缝，并防止纵筋过早失稳。",
+  "text_en": "For beams in special moment frames (seismic design), ACI 318 requires closely spaced hoops in potential plastic hinge regions. Within a distance of 2h from the column face at each end, hoop spacing must not exceed the smallest of: d/4, six times the smallest flexural bar diameter (or five times if using Grade 80 bars), and 150 mm:contentReference[oaicite:46]{index=46}:contentReference[oaicite:47]{index=47}. The first hoop is placed within 50 mm of the face of the support:contentReference[oaicite:48]{index=48}. Outside the hinge region, the remaining beam span still requires stirrups with seismic hooks at spacing not more than d/2:contentReference[oaicite:49]{index=49}. These rules ensure many fine cracks form in severe earthquakes instead of a few wide cracks, and prevent premature buckling of longitudinal bars.",
+  "source": "ACI 318",
+  "section_zh": "特殊框架梁箍筋细节",
+  "section_en": "Special Frame Beam Hoop Details",
+  "structure_type_zh": "特殊抗震框架",
+  "structure_type_en": "Special Moment Frame",
+  "tags": [
+    "seismic",
+    "beam_hoops",
+    "ACI318"
+  ]
+},
+
+{
+  "text_zh": "特殊抗震框架柱端也要求紧密箍筋约束。ACI 318 规定，柱端塑性铰区长度 l_o 内横向箍筋间距不得超过以下最小值：柱最小截面边长的1/4、6倍最小纵筋直径（Grade 80时为5倍直径）、以及按公式(21-2)计算的 s_0（100 mm ≤ s_0 ≤ 150 mm）:contentReference[oaicite:50]{index=50}:contentReference[oaicite:51]{index=51}。通常这意味着柱端箍筋间距不大于100 mm（有足够扣件时可放宽至150 mm）:contentReference[oaicite:52]{index=52}:contentReference[oaicite:53]{index=53}。超过该长度以外的柱段，箍筋间距可放宽但不得超过6倍纵筋直径或150 mm:contentReference[oaicite:54]{index=54}。若柱保护层厚度超过100 mm，还需在保护层内加设额外箍筋（间距≤300 mm）防止保护层剥落:contentReference[oaicite:55]{index=55}。这些要求提高柱塑性区的延性并限制震裂裂缝宽度。",
+  "text_en": "Special moment frame columns also require tight confinement reinforcement. ACI 318 stipulates that within the plastic hinge length l_o at column ends, transverse tie spacing shall not exceed the smallest of: one-quarter of the minimum member dimension, six times the smallest longitudinal bar diameter (five times for Grade 80 bars), and the value s_0 from Eq. (21-2) (with 100 mm ≤ s_0 ≤ 150 mm):contentReference[oaicite:56]{index=56}:contentReference[oaicite:57]{index=57}. In practice this typically means column end ties spaced at 100 mm or less (allowable up to 150 mm if sufficient cross-ties are provided):contentReference[oaicite:58]{index=58}:contentReference[oaicite:59]{index=59}. Beyond that length, tie spacing may relax but not exceed six bar diameters or 150 mm:contentReference[oaicite:60]{index=60}. If the column cover exceeds 100 mm, additional outer ties with max 300 mm spacing are required to prevent cover spalling:contentReference[oaicite:61]{index=61}. These measures enhance column ductility in plastic zones and limit crack widths during seismic events.",
+  "source": "ACI 318",
+  "section_zh": "特殊框架柱箍筋约束",
+  "section_en": "Special Frame Column Confinement",
+  "structure_type_zh": "特殊抗震框架",
+  "structure_type_en": "Special Moment Frame",
+  "tags": [
+    "seismic",
+    "column_ties",
+    "ACI318"
+  ]
+},
+
+{
+  "text_zh": "ACI 318 对特殊抗震剪力墙（结构墙）规定了边缘构件和配筋限制，以控制裂缝和保持延性。当墙体边缘受压应力很高时，需设置特殊边缘构件，其纵筋须箍以箍筋约束，箍筋要求类似于框架柱（小间距，不超过约100 mm，或有交叉扣件时适当放宽）:contentReference[oaicite:62]{index=62}:contentReference[oaicite:63]{index=63}。即使不需要特殊边缘构件，若墙边缘纵筋配筋率较高，也必须在边缘区设置箍筋，其纵向间距不得大于200 mm:contentReference[oaicite:64]{index=64}。此外，结构墙水平和竖向分布钢筋比率均不小于0.0025，以限制剪力裂缝宽度:contentReference[oaicite:65]{index=65}:contentReference[oaicite:66]{index=66}，且水平筋间距不超过 min(l_w/5, 3h, 450 mm)，竖向筋间距不超过 min(l_w/3, 3h, 450 mm):contentReference[oaicite:67]{index=67}:contentReference[oaicite:68]{index=68}。这些规定确保抗震墙在地震作用下裂缝细密、延性良好。",
+  "text_en": "ACI 318 imposes boundary element and reinforcement limits for special reinforced concrete shear walls to control cracking and maintain ductility. When the wall edge compression is high, special boundary elements with concentrated longitudinal bars and closely spaced ties are required, with tie spacing similar to that in frame columns (very tight, on the order of 100 mm, with slight relaxation if cross-ties are used):contentReference[oaicite:69]{index=69}:contentReference[oaicite:70]{index=70}. Even if special boundary elements are not triggered, if the wall’s edge reinforcement ratio is high, confinement ties must be provided at the edges with a maximum tie spacing of 200 mm:contentReference[oaicite:71]{index=71}. In addition, structural walls must have minimum horizontal and vertical distributed reinforcement ratios of 0.0025 to control shear cracking:contentReference[oaicite:72]{index=72}:contentReference[oaicite:73]{index=73}, and the spacing of horizontal bars shall not exceed the lesser of l_w/5, 3h, or 450 mm, while vertical bar spacing shall not exceed the lesser of l_w/3, 3h, or 450 mm:contentReference[oaicite:74]{index=74}:contentReference[oaicite:75]{index=75}. These provisions ensure that seismic wall cracks remain fine and the wall retains good ductility under earthquake loading.",
+  "source": "ACI 318",
+  "section_zh": "特殊结构墙配筋要求",
+  "section_en": "Special Structural Wall Requirements",
+  "structure_type_zh": "特殊抗震墙",
+  "structure_type_en": "Special Structural Wall",
+  "tags": [
+    "seismic",
+    "wall_reinforcement",
+    "ACI318"
+  ]
+},
+
+{
+  "text_zh": "ACI 318 对钢筋应力亦有限制以确保裂缝控制和延性。对于正常设计，可取钢筋使用阶段应力 f_s ≈ 0.67 f_y，以平衡裂缝宽度控制和材料利用:contentReference[oaicite:76]{index=76}。当采用高强度钢筋时，需注意降低应力限值：例如，ACI 将420 MPa作为分界，当钢筋屈服强度超过280 MPa时应特别注意裂缝控制:contentReference[oaicite:77]{index=77}:contentReference[oaicite:78]{index=78}。在特殊抗震框架中，若使用Grade 80钢筋，规范降低了梁纵筋配筋率上限（由Grade 60时的2.5%降为2.0%:contentReference[oaicite:79]{index=79}:contentReference[oaicite:80]{index=80}），并相应收紧箍筋间距要求（梁箍筋由6 d_b改为5 d_b:contentReference[oaicite:81]{index=81}:contentReference[oaicite:82]{index=82}，柱箍筋由6 d_b改为5 d_b:contentReference[oaicite:83]{index=83}）。这些限制确保即使用高强钢，构件在服务和地震状态下的裂缝宽度和延性仍符合要求。",
+  "text_en": "ACI 318 imposes reinforcement stress limits to ensure crack control and ductility. For normal designs, the steel service stress f_s is typically taken as ~0.67 f_y, balancing crack width control with material efficiency:contentReference[oaicite:84]{index=84}. When using higher-strength rebar, lower service stress limits are prudent: ACI highlights that crack control becomes critical once yield strength exceeds ~280 MPa:contentReference[oaicite:85]{index=85}:contentReference[oaicite:86]{index=86}. In special seismic frames, if Grade 80 reinforcement is used, the code reduces the maximum longitudinal reinforcement ratio in beams (from 2.5% for Grade 60 to 2.0% for Grade 80:contentReference[oaicite:87]{index=87}:contentReference[oaicite:88]{index=88}) and correspondingly tightens tie spacing requirements (beam hoop limit from 6 d_b to 5 d_b:contentReference[oaicite:89]{index=89}:contentReference[oaicite:90]{index=90}, and column tie limit from 6 d_b to 5 d_b:contentReference[oaicite:91]{index=91}). These limits ensure that even with high-strength steel, members meet crack width and ductility criteria under service and seismic conditions.",
+  "source": "ACI 318",
+  "section_zh": "钢筋应力与高强钢限制",
+  "section_en": "Rebar Stress and High-Strength Limits",
+  "structure_type_zh": "一般建筑结构及特殊抗震结构",
+  "structure_type_en": "General & Seismic Structures",
+  "tags": [
+    "steel_stress",
+    "high_strength_steel",
+    "ACI318"
+  ]
+}
+]
